@@ -8,6 +8,7 @@ export function mapRoute(
   destination: string,
   mode: "walking" | "driving" | "transit",
   origin?: string,
+  waypoints: string[] = [],
 ) {
   const params = new URLSearchParams({
     api: "1",
@@ -15,6 +16,7 @@ export function mapRoute(
     travelmode: mode,
   });
   if (origin) params.set("origin", origin);
+  if (waypoints.length) params.set("waypoints", waypoints.join("|"));
   return `https://www.google.com/maps/dir/?${params}`;
 }
 export const travelSources = {
@@ -78,3 +80,15 @@ export const places = [
     source: "CDMX365 · directorio independiente",
   },
 ];
+
+/** Llegada en auto desde otro estado: reglas públicas, sin datos personales. */
+export const driveSources = {
+  pase: "https://www.paseturistico.cdmx.gob.mx/",
+  paseTramite:
+    "https://www.cdmx.gob.mx/public/InformacionTramite.xhtml?faces-redirect=true&idTramite=98",
+  hoyNoCircula: "https://hoynocircula.cdmx.gob.mx/",
+  foreignRules:
+    "https://www.motorpasion.com.mx/industria/hoy-no-circula-placas-foraneas-octubre-2025",
+  hotelParking:
+    "https://www.kayak.com/Mexico-City-Hotels-Hotel-Beverly.515079.ksp",
+};

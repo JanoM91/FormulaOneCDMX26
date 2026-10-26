@@ -1,4 +1,16 @@
 import { z } from "zod";
+export const emptyDrive = { origin: "", stop: null };
+export const driveSchema = z.object({
+  origin: z.string().trim().max(120),
+  stop: z
+    .object({
+      label: z.string().trim().min(1).max(80),
+      address: z.string().trim().min(1).max(160),
+      window: z.string().trim().max(80),
+      note: z.string().trim().max(200),
+    })
+    .nullable(),
+});
 export const tripSchema = z.object({
   travelers: z
     .array(
@@ -21,6 +33,7 @@ export const tripSchema = z.object({
   football: z.string().max(150),
   luggage: z.boolean(),
   checkedIn: z.boolean(),
+  drive: driveSchema.default(emptyDrive),
 });
 export const tripImportSchema = z.object({ trip: tripSchema });
 export const emptyTrip = {
@@ -30,6 +43,7 @@ export const emptyTrip = {
   football: "",
   luggage: false,
   checkedIn: false,
+  drive: emptyDrive,
 };
 export const ticketSchema = z.object({
   day: z.enum(["friday", "saturday", "sunday"]),

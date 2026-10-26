@@ -33,3 +33,9 @@ No se ha presenciado una sesión en vivo del GP de México 2026 (aún no comienz
 Navegador sobre compilación de producción local a 390 × 844: captura manual de los tres viajeros; habitación individual y compartida correctas; números de cuarto de prueba y check-in persistieron tras recarga. Los números ficticios y la marca de check-in se retiraron después. Ruta de sábado cambia al acceso del Palacio de los Deportes. Hotel y horarios legibles; sin desbordamiento horizontal (390/390), consola sin errores; alto contraste revisado visualmente. El selector nativo de archivos se interrumpió durante la prueba, por lo que la importación JSON se verifica por pruebas de esquema, no se afirma que se completó el selector en navegador.
 
 La versión de desarrollo detenida durante la interrupción sirvió una shell de caché sin hidratar correctamente; la verificación final se hizo con una compilación de producción y un origen local limpio. El póster y la tipografía están incluidos en la lista de recursos offline. Nombres reales, cuartos y archivos privados quedan excluidos del commit. La captura de reserva tampoco se publica. Documento de continuidad: docs/CLAUDE-HANDOFF.md.
+
+## Pulido móvil, imágenes y llegada en auto — 27 octubre 2026
+
+25 pruebas aprobadas (nuevas: migración del plan de manejo, validación de parada, ruta con punto intermedio). TypeScript y compilación de producción aprobados.
+
+Compilación local a 390 × 844 (Playwright, tema México 2026, claro/oscuro, alto contraste y temas alternos): sin desbordamiento horizontal en las 7 secciones (antes Inicio medía 646 px); títulos y pestañas antes invisibles ahora legibles; 25 imágenes cargan sin errores; créditos visibles en Guía. Archivo de viaje anonimizado importado: ruta Maps con origen, parada y hotel; persistencia tras recarga. No se probó en un teléfono físico ni en la preview de Vercel desde este entorno.

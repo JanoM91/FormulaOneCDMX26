@@ -272,6 +272,7 @@ export const defaultPreferences: Preferences = {
     football: "",
     luggage: false,
     checkedIn: false,
+    drive: { origin: "", stop: null },
   },
   tickets: [],
   notes: { friday: "", saturday: "", sunday: "" },

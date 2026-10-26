@@ -29,3 +29,16 @@ La lista de noticias es una selección editorial; su fecha es la de verificació
 - Twin Peaks Insurgentes: https://twinpeaksmexico.mx/sucursales/insurgentes-sur/ para ubicación/teléfono; horario de https://www.opentable.com/r/twin-peaks-mexico-ciudad-de-mexico explícitamente atribuido a directorio.
 - Cantina La 20 WTC: https://cdmx365.com/es/cantina-la-20-wtc , directorio independiente. Transmisiones específicas no verificadas ni prometidas.
 - Cartel MéxicoGP 2026 aportado por usuario, conservado sin modificación de imagen. La reserva privada no se incorpora como recurso. Tipografía Barlow Condensed Bold, Google Fonts: https://github.com/google/fonts/tree/main/ofl/barlowcondensed ; licencia OFL incluida en public/fonts/OFL.txt.
+
+## Imágenes (27-oct-2026)
+
+- Fotos de autos 2026 (un auto por piloto) y vistas aéreas del Autódromo: Wikimedia Commons, licencias CC BY 4.0 y CC BY-SA 4.0. Autor, licencia y página de origen por imagen en `src/lib/media.ts`; se muestran en Guía → Créditos de imágenes. Imágenes recortadas y reducidas a WebP.
+- Trazado: `File:2022 F1 CourseLayout Mexico.svg` (CC BY-SA 4.0). Sus zonas DRS son de 2022; la app lo aclara.
+- No se incluyen retratos de personas reales.
+
+## Llegada en auto (27-oct-2026)
+
+- Pase Turístico oficial: https://www.paseturistico.cdmx.gob.mx/ y ficha de trámite https://www.cdmx.gob.mx/public/InformacionTramite.xhtml?faces-redirect=true&idTramite=98 (vigencias 3/7/14 días, Llave CDMX, sin validez en contingencia; resumen de Fox Sports MX, 23-may-2026).
+- Hoy No Circula para placas de otros estados (5:00–11:00 entre semana, día por placa, sábados): Motorpasión MX, oct-2025; consulta oficial https://hoynocircula.cdmx.gob.mx/.
+- Valet sin costo del hotel: listado de Kayak; pendiente de confirmar con el hotel.
+- La parada personal del viaje vive solo en el archivo privado importado, no en el código.

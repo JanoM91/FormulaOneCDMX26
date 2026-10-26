@@ -80,3 +80,43 @@ test("Maps encodes public destinations and lets arrival origin be selected on de
   assert.equal(route.searchParams.get("origin"), hotel.destination);
   assert.equal(route.searchParams.get("travelmode"), "transit");
 });
+test("trips saved before the drive plan migrate with an empty drive", () => {
+  const { drive: _drive, ...legacyTrip } = defaultPreferences.trip;
+  const result = tripImportSchema.parse({ trip: legacyTrip });
+  assert.deepEqual(result.trip.drive, { origin: "", stop: null });
+});
+test("drive plan accepts a stop and rejects a stop without address", () => {
+  const ok = tripImportSchema.parse({
+    trip: {
+      ...defaultPreferences.trip,
+      drive: {
+        origin: "Ciudad A",
+        stop: {
+          label: "Trámite",
+          address: "Calle 1, Ciudad B",
+          window: "10:00–18:00",
+          note: "",
+        },
+      },
+    },
+  });
+  assert.equal(ok.trip.drive.stop?.label, "Trámite");
+  const bad = tripImportSchema.safeParse({
+    trip: {
+      ...defaultPreferences.trip,
+      drive: {
+        origin: "Ciudad A",
+        stop: { label: "X", address: "", window: "", note: "" },
+      },
+    },
+  });
+  assert.equal(bad.success, false);
+});
+test("driving route keeps the stop as a waypoint", () => {
+  const url = new URL(
+    mapRoute(hotel.destination, "driving", "Ciudad A", ["Calle 1, Ciudad B"]),
+  );
+  assert.equal(url.searchParams.get("origin"), "Ciudad A");
+  assert.equal(url.searchParams.get("waypoints"), "Calle 1, Ciudad B");
+  assert.equal(url.searchParams.get("travelmode"), "driving");
+});

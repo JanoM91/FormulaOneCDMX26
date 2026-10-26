@@ -2534,7 +2534,7 @@ h2 {
   position: relative;
 }
 .car-band img {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 2 / 1;
   border-radius: 0;
 }
 .car-band::after {
@@ -2576,4 +2576,58 @@ h2 {
   .car-band {
     margin: -20px -20px 16px;
   }
+}
+.drive-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0 14px;
+}
+.drive-flow {
+  list-style: none;
+  margin: 0 0 18px;
+  padding: 0 0 0 16px;
+  border-left: 3px solid var(--primary);
+  display: grid;
+  gap: 14px;
+}
+.drive-flow span {
+  display: block;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.drive-flow strong {
+  font-size: 1.05rem;
+}
+.drive-notes {
+  margin-top: 18px;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  display: grid;
+  gap: 10px;
+  font-size: 0.85rem;
+}
+.theme-paddock .drive-hint {
+  color: #b3cfbf;
+}
+.high-contrast .drive-hint {
+  color: #000;
+}
+.check-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.media-note {
+  font-size: 0.68rem;
+  margin: 0 0 14px;
+  color: var(--muted);
+}
+.theme-paddock .media-note {
+  color: #b3cfbf;
+}
+.high-contrast .media-note {
+  color: #000;
 }

@@ -17,6 +17,13 @@ export type Activity = {
   f1: boolean;
   observe: string;
 };
+export type DriveStop = {
+  label: string;
+  address: string;
+  window: string;
+  note: string;
+};
+export type DrivePlan = { origin: string; stop: DriveStop | null };
 export type Ticket = { day: Day; section: string; row: string; seats: string };
 export type Preferences = {
   trip: {
@@ -26,6 +33,7 @@ export type Preferences = {
     football: string;
     luggage: boolean;
     checkedIn: boolean;
+    drive: DrivePlan;
   };
   tickets: Ticket[];
   notes: Record<Day, string>;

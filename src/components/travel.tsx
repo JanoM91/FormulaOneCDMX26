@@ -15,7 +15,13 @@ import {
 import type { Day, Preferences } from "@/lib/types";
 import { days } from "@/lib/content";
 import { tripImportSchema, tripSchema } from "@/lib/preferences";
-import { hotel, mapRoute, places, travelSources } from "@/lib/travel";
+import {
+  driveSources,
+  hotel,
+  mapRoute,
+  places,
+  travelSources,
+} from "@/lib/travel";
 import { External, Heading, Notice } from "./primitives";
 type Trip = Preferences["trip"];
 export function TravelPanel({
@@ -243,6 +249,33 @@ export function TravelPanel({
       <section className="card">
         <Heading eyebrow="EL VIAJE EMPIEZA EL JUEVES" title="Nuestro plan" />
         <ol className="trip-timeline">
+          {trip.drive.origin && (
+            <li>
+              <time>JUE 29 · TEMPRANO</time>
+              <div>
+                <h3>Carretera desde {trip.drive.origin}</h3>
+                <p>
+                  Salir con margen. Llevar el Pase Turístico impreso si el auto
+                  tiene placas de otro estado y revisar el tráfico al entrar a
+                  la ciudad.
+                </p>
+              </div>
+            </li>
+          )}
+          {trip.drive.stop && (
+            <li>
+              <time>
+                JUE 29 · {trip.drive.stop.window || "ANTES DEL HOTEL"}
+              </time>
+              <div>
+                <h3>{trip.drive.stop.label}</h3>
+                <p>
+                  {trip.drive.stop.note ||
+                    "Parada pendiente antes o después del check-in."}
+                </p>
+              </div>
+            </li>
+          )}
           <li>
             <time>JUE 29 · TARDE</time>
             <div>
@@ -289,6 +322,7 @@ export function TravelPanel({
       </section>
       <section id="traslados">
         <Heading eyebrow="DEL HOTEL A LA EMOCIÓN" title="Cómo nos movemos" />
+        <DriveCard trip={trip} />
         <label className="route-day">
           Destino del día
           <select value={day} onChange={(e) => setDay(e.target.value as Day)}>
@@ -519,9 +553,13 @@ function TravelerForm({
           travelers: draft.travelers,
           arrival: draft.arrival,
           football: draft.football,
+          drive: draft.drive,
         });
         if (result.success) save(result.data);
-        else setError("Completa nombres e iniciales únicas de hasta 5 letras.");
+        else
+          setError(
+            "Completa nombres e iniciales únicas de hasta 5 letras y, si hay parada, su nombre y dirección.",
+          );
       }}
     >
       {draft.travelers.map((p, i) => (
@@ -588,6 +626,68 @@ function TravelerForm({
           onChange={(e) => setDraft({ ...draft, arrival: e.target.value })}
         />
       </label>
+      <fieldset>
+        <legend>Llegada en auto (opcional)</legend>
+        <label>
+          Salimos desde
+          <input
+            maxLength={120}
+            placeholder="Ciudad de origen"
+            value={draft.drive.origin}
+            onChange={(e) =>
+              setDraft({
+                ...draft,
+                drive: { ...draft.drive, origin: e.target.value },
+              })
+            }
+          />
+        </label>
+        <label className="check-row">
+          <input
+            type="checkbox"
+            checked={!!draft.drive.stop}
+            onChange={(e) =>
+              setDraft({
+                ...draft,
+                drive: {
+                  ...draft.drive,
+                  stop: e.target.checked
+                    ? { label: "", address: "", window: "", note: "" }
+                    : null,
+                },
+              })
+            }
+          />
+          Parada antes o después del check-in
+        </label>
+        {draft.drive.stop &&
+          (
+            [
+              ["label", "Nombre de la parada", 80],
+              ["address", "Dirección para Maps", 160],
+              ["window", "Horario de atención", 80],
+              ["note", "Qué hay que hacer", 200],
+            ] as const
+          ).map(([key, label, max]) => (
+            <label key={key}>
+              {label}
+              <input
+                required={key === "label" || key === "address"}
+                maxLength={max}
+                value={draft.drive.stop![key]}
+                onChange={(e) =>
+                  setDraft({
+                    ...draft,
+                    drive: {
+                      ...draft.drive,
+                      stop: { ...draft.drive.stop!, [key]: e.target.value },
+                    },
+                  })
+                }
+              />
+            </label>
+          ))}
+      </fieldset>
       <label>
         Equipos o ligas que queremos ver
         <input
@@ -599,5 +699,87 @@ function TravelerForm({
       <p role="alert">{error}</p>
       <button className="button primary">Guardar viajeros</button>
     </form>
+  );
+}
+
+function DriveCard({ trip }: { trip: Trip }) {
+  const { origin, stop } = trip.drive;
+  if (!origin)
+    return (
+      <p className="small muted drive-hint">
+        ¿Llegan en auto? Captura la ciudad de origen y cualquier parada en
+        “Editar viajeros y preferencias” para ver la ruta completa.
+      </p>
+    );
+  const waypoints = stop ? [stop.address] : [];
+  return (
+    <section className="card drive-card">
+      <span className="eyebrow">JUEVES 29 · CARRETERA</span>
+      <h3>
+        <Car size={20} /> Llegada en auto
+      </h3>
+      <ol className="drive-flow">
+        <li>
+          <span>Salida</span>
+          <strong>{origin}</strong>
+        </li>
+        {stop && (
+          <li>
+            <span>{stop.window || "Parada"}</span>
+            <strong>{stop.label}</strong>
+          </li>
+        )}
+        <li>
+          <span>Check-in desde 15:00</span>
+          <strong>{hotel.name}</strong>
+        </li>
+      </ol>
+      <div className="button-row">
+        <External
+          className="button primary"
+          href={mapRoute(hotel.destination, "driving", origin, waypoints)}
+        >
+          Ruta completa en Maps
+        </External>
+        {stop && (
+          <>
+            <External href={mapRoute(stop.address, "driving", origin)}>
+              Directo a {stop.label}
+            </External>
+            <External
+              href={mapRoute(hotel.destination, "driving", stop.address)}
+            >
+              De {stop.label} al hotel
+            </External>
+          </>
+        )}
+      </div>
+      <div className="drive-notes">
+        <p>
+          <strong>Placas de otro estado.</strong> Sin holograma de la Ciudad de
+          México, el Hoy No Circula restringe entre semana de 5:00 a 11:00,
+          además de un día según la placa y los sábados. El Pase Turístico es
+          gratuito, se tramita en línea con Llave CDMX y el de 7 días cubre de
+          jueves a domingo. No vale si se declara contingencia ambiental.
+        </p>
+        <div className="link-list">
+          <External href={driveSources.pase}>Pase Turístico oficial</External>
+          <External href={driveSources.hoyNoCircula}>
+            Consultar Hoy No Circula
+          </External>
+        </div>
+        <p>
+          <strong>Al llegar.</strong> El listado del hotel indica valet sin
+          costo; confírmalo al reservar o en recepción. Viernes a domingo
+          conviene dejar el auto y llegar al autódromo en Metro y Metrobús:
+          habrá cierres viales.
+        </p>
+        <p className="small muted">
+          Reglas consultadas el 26-oct-2026 en fuentes públicas; verifica en el
+          sitio oficial antes de salir. Los tiempos de manejo los calcula Maps
+          al abrir la ruta.
+        </p>
+      </div>
+    </section>
   );
 }

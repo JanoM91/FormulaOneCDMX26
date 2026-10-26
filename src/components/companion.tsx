@@ -70,7 +70,7 @@ import {
   Notice,
   Source,
 } from "./primitives";
-import { allMedia, teamCars, trackMedia } from "@/lib/media";
+import { allMedia, driverCars, teamCars, trackMedia } from "@/lib/media";
 import { TravelPanel } from "./travel";
 import { TimingPanel } from "./timing";
 
@@ -841,6 +841,10 @@ export default function Companion() {
               forma reciente y fortalezas en México: pendientes de una fuente
               verificada.
             </p>
+            <p className="media-note">
+              Fotos de los autos 2026: Wikimedia Commons, licencias CC BY y CC
+              BY-SA. Autores en Guía → Créditos de imágenes.
+            </p>
             {!teamView ? (
               <div className="driver-grid">
                 {visibleDrivers.map((d) => (
@@ -853,10 +857,10 @@ export default function Companion() {
                       } as React.CSSProperties
                     }
                   >
-                    {teamCars[d.team] && (
+                    {driverCars[d.id] && (
                       <MediaFigure
                         className="car-band"
-                        media={teamCars[d.team]!}
+                        media={driverCars[d.id]!}
                         credit={false}
                       />
                     )}
@@ -1015,8 +1019,10 @@ export default function Companion() {
                       />
                     )}
                     <p className="small muted">
-                      Referencia visual del circuito. Las gradas, puertas y
-                      servicios se confirman en el mapa oficial.
+                      Referencia visual del circuito. Las zonas DRS del diagrama
+                      son de 2022: en 2026 el DRS se sustituyó por aerodinámica
+                      activa. Gradas, puertas y servicios se confirman en el
+                      mapa oficial.
                     </p>
                   </section>
                 )}
@@ -1274,9 +1280,9 @@ export default function Companion() {
               <details className="card credits">
                 <summary>Créditos de imágenes</summary>
                 <p className="small muted">
-                  Fotos con licencia libre de Wikimedia Commons, reducidas para
-                  el teléfono. Sin afiliación con los autores ni con los
-                  equipos.
+                  Fotos con licencia libre de Wikimedia Commons, recortadas y
+                  reducidas para el teléfono. Sin afiliación con los autores ni
+                  con los equipos.
                 </p>
                 <ul>
                   {allMedia().map((m) => (
