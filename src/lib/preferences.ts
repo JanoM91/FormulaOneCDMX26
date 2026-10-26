@@ -1,4 +1,36 @@
 import { z } from "zod";
+export const tripSchema = z.object({
+  travelers: z
+    .array(
+      z.object({
+        initials: z.string().trim().min(1).max(5),
+        name: z.string().trim().min(1).max(100),
+        room: z.enum(["solo", "shared"]),
+      }),
+    )
+    .max(6)
+    .refine(
+      (t) => new Set(t.map((p) => p.initials)).size === t.length,
+      "Las iniciales deben ser únicas",
+    ),
+  rooms: z.object({
+    solo: z.string().trim().max(20),
+    shared: z.string().trim().max(20),
+  }),
+  arrival: z.string().max(120),
+  football: z.string().max(150),
+  luggage: z.boolean(),
+  checkedIn: z.boolean(),
+});
+export const tripImportSchema = z.object({ trip: tripSchema });
+export const emptyTrip = {
+  travelers: [],
+  rooms: { solo: "", shared: "" },
+  arrival: "Jueves 29 de octubre · por la tarde",
+  football: "",
+  luggage: false,
+  checkedIn: false,
+};
 export const ticketSchema = z.object({
   day: z.enum(["friday", "saturday", "sunday"]),
   section: z.string().trim().min(1).max(24),
@@ -15,6 +47,7 @@ export const ticketImportSchema = z.object({
     ),
 });
 export const preferencesSchema = z.object({
+  trip: tripSchema.default(emptyTrip),
   tickets: z.array(ticketSchema).max(3),
   notes: z.object({
     friday: z.string().max(3000),

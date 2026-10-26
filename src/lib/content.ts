@@ -265,6 +265,14 @@ export const checklist = [
   "Protección auditiva",
 ];
 export const defaultPreferences: Preferences = {
+  trip: {
+    travelers: [],
+    rooms: { solo: "", shared: "" },
+    arrival: "Jueves 29 de octubre · por la tarde",
+    football: "",
+    luggage: false,
+    checkedIn: false,
+  },
   tickets: [],
   notes: { friday: "", saturday: "", sunday: "" },
   checklist: {},

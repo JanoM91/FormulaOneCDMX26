@@ -20,3 +20,12 @@ Verificadas el 26 de octubre de 2026. La agenda proporcionada coincide con el ho
 OpenF1 devolvió las cinco sesiones de México 2026 mediante `sessions?year=2026&country_name=Mexico`. Jolpica devolvió clasificación 2026 y ronda explícita. Open-Meteo devolvió datos con zona CDMX. Ninguna de esas respuestas convierte al proveedor en oficial de F1.
 
 La lista de noticias es una selección editorial; su fecha es la de verificación, no una fecha de publicación inventada. Las recomendaciones de llegada no son horarios oficiales ni tiempos garantizados. Los asientos proceden exclusivamente del usuario y se entregan en archivo privado.
+
+## Viaje, hospedaje y diseño (26-oct-2026)
+- Usuario: captura de reserva con Hotel Beverly, Nueva York 301, Nápoles; 29-oct desde 15:00 y salida 1-nov 12:00. No se sube la captura, titular ni habitaciones a GitHub. La categoría Suite junior se muestra como dato a confirmar para ambas habitaciones.
+- Metro: https://www.metro.cdmx.gob.mx/acerca-del-metro/mas-informacion/preguntas-frecuentes y https://www.metro.cdmx.gob.mx/la-red/linea-9 . Metrobús: https://metrobus.cdmx.gob.mx/portal-ciudadano/preguntas-frecuentes , https://www.metrobus.cdmx.gob.mx/dependencia/PagoMB , https://metrobus.cdmx.gob.mx/mapas-de-sistema/mapa-linea-1/L1-estaciones . Itinerario orientativo sintetizado de la red, no consulta operativa en vivo. Tarifas Metro $5, Metrobús ordinario $6. No suponer transporte directo a cualquier puerta.
+- De Costa a Costa: https://decostaacosta.mx/ . El jueves aparece con error am/pm, por eso no se reproduce como horario confirmado.
+- Día Uno: https://diauno.com/ . Sin horario verificable en página, se pide confirmar.
+- Twin Peaks Insurgentes: https://twinpeaksmexico.mx/sucursales/insurgentes-sur/ para ubicación/teléfono; horario de https://www.opentable.com/r/twin-peaks-mexico-ciudad-de-mexico explícitamente atribuido a directorio.
+- Cantina La 20 WTC: https://cdmx365.com/es/cantina-la-20-wtc , directorio independiente. Transmisiones específicas no verificadas ni prometidas.
+- Cartel MéxicoGP 2026 aportado por usuario, conservado sin modificación de imagen. La reserva privada no se incorpora como recurso. Tipografía Barlow Condensed Bold, Google Fonts: https://github.com/google/fonts/tree/main/ofl/barlowcondensed ; licencia OFL incluida en public/fonts/OFL.txt.

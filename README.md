@@ -60,3 +60,11 @@ Proyecto Vercel: `formula-one-cdmx26`, conectado a `JanoM91/FormulaOneCDMX26`. F
 ## Límites conocidos
 
 El directo requiere una suscripción OpenF1 válida y una sesión activa; no se puede certificar el directo del evento antes de su comienzo. No hay API oficial pública integrada de F1/FIA/MéxicoGP: esos adaptadores son snapshots editoriales o enlaces. Fotos de pilotos no incluidas por falta de licencia verificada. Estadísticas avanzadas (podios, tendencias, historia completa de equipos) y servicios georreferenciados interiores no se presentan sin fuentes confirmadas. La geolocalización es puntual, no seguimiento del grupo. Los mensajes de Race Control se conservan en su idioma original.
+
+## Viaje y diseño México 2026
+
+La sección **Viaje** reúne Hotel Beverly, check-in/check-out, plan desde el jueves, captura privada de viajeros y cuartos, Metro/Metrobús, enlaces a Google Maps/Uber y opciones para cenar o ver futbol. Los horarios publicados se acompañan de fuente y las transmisiones se confirman con el local.
+
+Para cargar el grupo: transferir privadamente `.private/nuestro-viaje.json` al teléfono y usar **Viaje → Importar nuestro viaje**, o **Editar viajeros y preferencias**. Ningún nombre ni cuarto se incluye en el código público. La importación reemplaza el viaje guardado; los asientos y notas existentes se conservan. No volver a importar el archivo inicial después del check-in si se quieren conservar los cuartos capturados.
+
+El tema predeterminado sigue el cartel aportado por el propietario, con verde, negro, rojo, líneas diagonales y Barlow Condensed autoalojada. La licencia OFL está junto a la fuente. Consultar `docs/CLAUDE-HANDOFF.md` para continuar el proyecto en otro asistente sin transferir secretos.

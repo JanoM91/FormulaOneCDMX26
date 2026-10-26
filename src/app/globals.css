@@ -1889,3 +1889,562 @@ dialog > .button {
   border-radius: 10px;
   margin: 18px 0;
 }
+
+/* Event-inspired identity. The official poster is supplied by the owner. */
+@font-face {
+  font-family: "Barlow Condensed";
+  src: url("/fonts/BarlowCondensed-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+h1,
+h2,
+h3,
+.brand,
+.countdown,
+.stay-dates strong {
+  font-family: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.005em;
+}
+h1,
+h2 {
+  text-transform: uppercase;
+}
+.app.theme-paddock {
+  --bg: #061e15;
+  --surface: #f7faf6;
+  --ink: #142d24;
+  --muted: #52675d;
+  --primary: #006c3d;
+  --accent: #79fbaa;
+  --line: #c8d8cc;
+  background:
+    radial-gradient(ellipse at 95% 5%, #00a75a44, transparent 45%),
+    repeating-linear-gradient(72deg, transparent 0 8px, #2df68d08 8px 10px),
+    var(--bg);
+}
+.theme-paddock .topbar,
+.theme-paddock .welcome,
+.theme-paddock .travel-title,
+.theme-paddock footer,
+.theme-paddock main > .section-heading,
+.theme-paddock .day-intro,
+.theme-paddock .travel-panel > section > .section-heading,
+.theme-paddock .travel-panel > section:not(.card) > p,
+.theme-paddock .route-day {
+  color: #f5fff7;
+}
+.theme-paddock .topbar {
+  border-color: #53ca8a45;
+}
+.theme-paddock .brand-mark {
+  background: #00e171;
+  color: #032519;
+  border-radius: 0;
+}
+.theme-paddock .brand-mark span {
+  color: #05251a;
+}
+.theme-paddock .connection,
+.theme-paddock .welcome .eyebrow,
+.theme-paddock .welcome p,
+.theme-paddock main > .muted,
+.theme-paddock footer,
+.theme-paddock .section-heading .eyebrow,
+.theme-paddock .day-intro p {
+  color: #b3cfbf;
+}
+.theme-paddock .card .section-heading .eyebrow {
+  color: var(--muted);
+}
+.theme-paddock .desktop-nav button {
+  color: #b3cfbf;
+}
+.theme-paddock .desktop-nav button[aria-current] {
+  background: #00b864;
+  color: #041c11;
+}
+.theme-paddock .hero {
+  border: 1px solid #08aa61;
+  border-top: 4px solid #f32820;
+  border-radius: 4px 28px 4px 4px;
+  background:
+    linear-gradient(110deg, #041d13 35%, #00693acc),
+    repeating-linear-gradient(72deg, #00ca70 0 3px, #002c1b 3px 10px);
+}
+.theme-paddock .welcome h1 em {
+  color: #23ee87;
+}
+.theme-paddock .hero .button.light {
+  background: #00ed80;
+  color: #002c19;
+}
+.theme-paddock .brand-mini {
+  color: #00ed80;
+}
+.theme-paddock .day-intro h1,
+.theme-paddock main > .filter-bar {
+  color: #f5fff7;
+}
+.event-welcome {
+  display: grid;
+  grid-template-columns: 1.6fr 0.65fr;
+  gap: 36px;
+  align-items: center;
+  padding: 10px 0 24px;
+}
+.event-welcome h1 {
+  font-size: clamp(3.4rem, 6.7vw, 6.5rem);
+  line-height: 0.94;
+  letter-spacing: -0.015em;
+}
+.event-welcome p {
+  position: static;
+  max-width: 460px;
+  margin-bottom: 24px;
+}
+.event-poster {
+  margin: 0;
+  max-width: 250px;
+  justify-self: end;
+  transform: rotate(3deg);
+}
+.event-poster img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #08a754;
+  box-shadow: 0 18px 40px #0008;
+}
+.event-poster figcaption {
+  font-size: 0.58rem;
+  color: #b3cfbf;
+  margin-top: 10px;
+  text-align: center;
+}
+.crew-pills {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+}
+.crew-pills span {
+  border: 1px solid #42ca8b;
+  padding: 7px 11px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  border-radius: 50px;
+}
+.trip-entry {
+  margin-top: 4px;
+  border-left: 4px solid #ff3028;
+}
+.travel-title {
+  margin: 10px 0 25px;
+}
+.travel-title h1 {
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: 0.95;
+  margin-top: 14px;
+}
+.travel-title em {
+  font-style: normal;
+  color: #13cf76;
+}
+.travel-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 22px 0;
+}
+.travel-links button {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  padding: 13px 15px;
+  font-size: 0.75rem;
+  min-height: 44px;
+}
+.travel-panel section[id] {
+  scroll-margin-top: 20px;
+}
+.hotel-card {
+  border-top: 5px solid #ec2421;
+}
+.hotel-card h2 {
+  font-size: 3.3rem;
+  margin: 15px 0;
+}
+.hotel-heading {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  color: var(--primary);
+}
+.hotel-card > p svg {
+  vertical-align: middle;
+}
+.stay-dates {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin: 25px 0;
+}
+.stay-dates > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px 16px;
+}
+.stay-dates > div + div {
+  border-left: 1px solid var(--line);
+}
+.stay-dates span {
+  font-size: 0.64rem;
+  letter-spacing: 0.07em;
+  font-weight: 700;
+}
+.stay-dates strong {
+  font-size: 3rem;
+  line-height: 1;
+}
+.stay-dates small {
+  color: var(--muted);
+  font-size: 0.73rem;
+  line-height: 1.5;
+}
+.traveler-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 20px 0;
+}
+.traveler {
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #eaf3ec;
+}
+.avatar {
+  display: inline-flex;
+  width: 60px;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #005f37;
+  color: white;
+  font-weight: 750;
+  margin-bottom: 18px;
+}
+.traveler h3 {
+  font-size: 1.5rem;
+}
+.traveler p {
+  font-size: 0.75rem;
+  margin: 8px 0;
+}
+.traveler > strong {
+  font-size: 0.78rem;
+}
+.room-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin: 20px 0;
+}
+.room-grid label,
+.traveler-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  font-size: 0.85rem;
+}
+.room-grid small {
+  color: var(--muted);
+  min-height: 1em;
+}
+.room-grid input,
+.traveler-form input,
+.traveler-form select,
+.route-day select {
+  width: 100%;
+  min-width: 0;
+  min-height: 46px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: #142d24;
+  padding: 12px;
+  border-radius: 7px;
+  font-size: 1rem;
+}
+.traveler-form {
+  padding: 20px 0;
+}
+.traveler-form fieldset {
+  display: grid;
+  grid-template-columns: 0.6fr 1.6fr 1fr;
+  gap: 12px;
+  border: 1px solid var(--line);
+  margin: 12px 0;
+  padding: 18px;
+}
+.traveler-form > label {
+  margin: 18px 0;
+}
+.save-status {
+  color: var(--primary);
+}
+.travel-panel form > .button {
+  margin-top: 20px;
+}
+.trip-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.trip-timeline li {
+  display: grid;
+  grid-template-columns: 155px 1fr;
+  gap: 25px;
+  border-bottom: 1px solid var(--line);
+  padding: 25px 0;
+}
+.trip-timeline li:last-child {
+  border: 0;
+  padding-bottom: 0;
+}
+.trip-timeline time {
+  font-size: 0.67rem;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.7;
+}
+.trip-timeline p {
+  margin-bottom: 0;
+}
+.route-day {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  max-width: 420px;
+  margin: 20px 0;
+  font-size: 0.8rem;
+}
+.route-badge {
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  padding: 8px 15px;
+  font-weight: 700;
+}
+.route-steps {
+  padding-left: 20px;
+}
+.route-steps li {
+  padding: 0 0 16px 7px;
+  font-size: 0.86rem;
+  line-height: 1.65;
+}
+.transport-hours {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin: 25px 0;
+}
+.dining-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.dining-card {
+  border-top: 3px solid #0e9f62;
+  display: flex;
+  flex-direction: column;
+}
+.dining-card h3 {
+  font-size: 1.6rem;
+  margin-top: 12px;
+}
+.dining-card .link-list {
+  margin-top: auto;
+}
+.desktop-nav {
+  gap: 3px;
+}
+.desktop-nav button {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (max-width: 640px) {
+  .bottom-nav {
+    grid-template-columns: repeat(7, 1fr);
+  }
+  .bottom-nav span {
+    font-size: 0.55rem;
+  }
+  .bottom-nav button {
+    min-height: 50px;
+  }
+  .event-welcome {
+    grid-template-columns: 1fr 105px;
+    gap: 14px;
+  }
+  .event-welcome h1 {
+    font-size: 2.95rem;
+  }
+  .event-welcome .eyebrow {
+    font-size: 0.5rem;
+  }
+  .event-welcome p {
+    font-size: 0.77rem;
+    margin-bottom: 12px;
+  }
+  .event-poster {
+    align-self: start;
+    margin-top: 24px;
+  }
+  .event-poster figcaption {
+    font-size: 0.5rem;
+  }
+  .trip-entry {
+    font-size: 0.7rem;
+    padding: 12px 10px;
+    gap: 6px;
+  }
+  .trip-entry svg:last-child {
+    display: none;
+  }
+  .travel-title h1 {
+    font-size: 3.2rem;
+  }
+  .hotel-card h2 {
+    font-size: 2.8rem;
+  }
+  .stay-dates > div {
+    padding: 20px 10px;
+  }
+  .stay-dates span {
+    font-size: 0.56rem;
+  }
+  .stay-dates strong {
+    font-size: 2.6rem;
+  }
+  .traveler-grid,
+  .room-grid,
+  .dining-grid,
+  .transport-hours {
+    grid-template-columns: 1fr;
+  }
+  .traveler {
+    display: grid;
+    grid-template-columns: 55px 1fr;
+    column-gap: 15px;
+  }
+  .traveler .avatar {
+    grid-row: 1 / 4;
+    width: 50px;
+    height: 50px;
+    font-size: 0.8rem;
+    margin: 0;
+  }
+  .traveler h3 {
+    font-size: 1.4rem;
+  }
+  .traveler p {
+    margin: 5px 0;
+  }
+  .trip-timeline li {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .traveler-form fieldset {
+    grid-template-columns: 1fr;
+    padding: 12px;
+    min-width: 0;
+  }
+  .travel-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .travel-links button {
+    font-size: 0.7rem;
+    padding: 12px 8px;
+    text-align: left;
+  }
+  .room-grid {
+    gap: 20px;
+  }
+}
+/* Accessibility overrides come last so the event palette never reduces contrast. */
+.app.high-contrast {
+  --bg: #fff;
+  --surface: #fff;
+  --ink: #000;
+  --muted: #222;
+  --primary: #111;
+  --line: #666;
+  background: #fff;
+  color: #000;
+}
+.high-contrast .topbar,
+.high-contrast .welcome,
+.high-contrast .travel-title,
+.high-contrast footer,
+.high-contrast main > .section-heading,
+.high-contrast .day-intro,
+.high-contrast .travel-panel > section > .section-heading,
+.high-contrast .travel-panel > section:not(.card) > p,
+.high-contrast .route-day,
+.high-contrast .section-heading .eyebrow,
+.high-contrast .welcome .eyebrow,
+.high-contrast .welcome p,
+.high-contrast .connection,
+.high-contrast .desktop-nav button,
+.high-contrast main > .muted,
+.high-contrast .brand-mini,
+.high-contrast .day-intro h1,
+.high-contrast .day-intro p {
+  color: #000;
+}
+.high-contrast .welcome h1 em,
+.high-contrast .travel-title em {
+  color: #00532d;
+}
+.high-contrast .hero {
+  background: #111;
+  border-color: #000;
+}
+.high-contrast .desktop-nav button[aria-current] {
+  background: #111;
+  color: white;
+}
+.high-contrast .event-poster figcaption {
+  color: #222;
+}
+@media (max-width: 360px) {
+  .event-welcome {
+    grid-template-columns: 1fr 80px;
+  }
+  .event-welcome h1 {
+    font-size: 2.5rem;
+  }
+}
+.theme-paddock .section-heading {
+  color: #f5fff7;
+}
+.theme-paddock .card .section-heading {
+  color: var(--ink);
+}
+.high-contrast .section-heading {
+  color: #000;
+}
+
+.icon-button {
+  color: var(--ink);
+}

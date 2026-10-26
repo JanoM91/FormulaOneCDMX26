@@ -25,3 +25,11 @@ Vercel desplegó automáticamente la rama de implementación en `https://formula
 ## Límites de la verificación
 
 No se ha presenciado una sesión en vivo del GP de México 2026 (aún no comienza). PWA y geolocalización requieren contexto seguro. Pruebas locales de navegador no equivalen a una auditoría formal WCAG ni una instalación en cada modelo de teléfono. Mapas externos y mensajería dependen de servicios de terceros.
+
+## Actualización de viaje y diseño — 26 octubre 2026
+
+22 pruebas aprobadas: se añaden migración de preferencias antiguas sin perder asientos/notas, importación de viajeros y cuartos con descarte de campos ajenos, rechazo de datos inválidos y URLs de Maps sin datos personales. Compilación de producción y TypeScript aprobados.
+
+Navegador sobre compilación de producción local a 390 × 844: captura manual de los tres viajeros; habitación individual y compartida correctas; números de cuarto de prueba y check-in persistieron tras recarga. Los números ficticios y la marca de check-in se retiraron después. Ruta de sábado cambia al acceso del Palacio de los Deportes. Hotel y horarios legibles; sin desbordamiento horizontal (390/390), consola sin errores; alto contraste revisado visualmente. El selector nativo de archivos se interrumpió durante la prueba, por lo que la importación JSON se verifica por pruebas de esquema, no se afirma que se completó el selector en navegador.
+
+La versión de desarrollo detenida durante la interrupción sirvió una shell de caché sin hidratar correctamente; la verificación final se hizo con una compilación de producción y un origen local limpio. El póster y la tipografía están incluidos en la lista de recursos offline. Nombres reales, cuartos y archivos privados quedan excluidos del commit. La captura de reserva tampoco se publica. Documento de continuidad: docs/CLAUDE-HANDOFF.md.

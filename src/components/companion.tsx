@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
+  Hotel,
   CalendarDays,
   Check,
   CheckCheck,
@@ -62,6 +63,7 @@ import {
 import { ticketImportSchema, ticketSchema } from "@/lib/preferences";
 import { usePreferences, useRemote } from "./hooks";
 import { External, Heading, Notice, Source } from "./primitives";
+import { TravelPanel } from "./travel";
 import { TimingPanel } from "./timing";
 
 const sections: { id: Section; label: string; icon: typeof Home }[] = [
@@ -70,6 +72,7 @@ const sections: { id: Section; label: string; icon: typeof Home }[] = [
   { id: "live", label: "En pista", icon: Radio },
   { id: "pilotos", label: "Pilotos", icon: Users },
   { id: "mapa", label: "Mapa", icon: MapPin },
+  { id: "viaje", label: "Viaje", icon: Hotel },
   { id: "guia", label: "Guía", icon: BookOpen },
 ];
 type InstallEvent = Event & {
@@ -403,16 +406,43 @@ export default function Companion() {
         {storageError && <Notice>{storageError}</Notice>}
         {section === "inicio" && (
           <>
-            <div className="welcome">
-              <span className="eyebrow">
-                30 OCT — 01 NOV · AUTÓDROMO HERMANOS RODRÍGUEZ
-              </span>
-              <h1>
-                Tres días.
-                <br />
-                Una gran <em>F1ESTA.</em>
-              </h1>
-              <p>Tu lugar, tu gente y toda la emoción de la pista.</p>
+            <div className="welcome event-welcome">
+              <div className="event-title">
+                <span className="eyebrow">
+                  30 OCT — 01 NOV · AUTÓDROMO HERMANOS RODRÍGUEZ
+                </span>
+                <h1>
+                  Tres días.
+                  <br />
+                  Una gran <em>F1ESTA.</em>
+                </h1>
+                <p>Tu lugar, tu gente y toda la emoción de la pista.</p>
+                <button
+                  className="button primary trip-entry"
+                  onClick={() => navigate("viaje")}
+                >
+                  <Hotel size={18} /> Nuestro viaje · Hotel Beverly{" "}
+                  <ArrowRight size={18} />
+                </button>
+                {prefs.trip.travelers.length > 0 && (
+                  <div className="crew-pills" aria-label="Nuestros viajeros">
+                    {prefs.trip.travelers.map((p) => (
+                      <span key={p.initials} title={p.name}>
+                        {p.initials}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+              <figure className="event-poster">
+                <img
+                  src="/mexico-gp-2026.png"
+                  alt="Cartel del Gran Premio de la Ciudad de México 2026: autos sobre un fondo verde de líneas diagonales"
+                  width="575"
+                  height="1024"
+                />
+                <figcaption>Cartel del evento · MéxicoGP 2026</figcaption>
+              </figure>
             </div>
             <section className="hero">
               <div className="hero-copy">
@@ -1105,6 +1135,14 @@ export default function Companion() {
             </div>
           </>
         )}
+        {section === "viaje" && (
+          <TravelPanel
+            trip={prefs.trip}
+            save={(trip) => change("trip", trip)}
+            day={day}
+            setDay={setDay}
+          />
+        )}
         {section === "guia" && (
           <>
             <Heading
@@ -1279,16 +1317,16 @@ export default function Companion() {
               change("theme", e.target.value as Preferences["theme"])
             }
           >
-            <option value="paddock">Paddock claro · verde y crema</option>
+            <option value="paddock">México 2026 · verde, negro y rojo</option>
             <option value="fiesta">México de fiesta · rojo y dorado</option>
             <option value="telemetry">Centro de carrera · azul y blanco</option>
           </select>
         </label>
         <h3>Privacidad en tu teléfono</h3>
         <p>
-          Asientos, notas, favorito y checklist se almacenan en este navegador.
-          No se sincronizan ni se envían a un servidor. La ubicación solo se
-          consulta al tocar “Estoy aquí”.
+          Viajeros, cuartos, asientos, notas, favorito y checklist se almacenan
+          en este navegador. No se sincronizan ni se envían a un servidor. La
+          ubicación solo se consulta al tocar “Estoy aquí”.
         </p>
         <button
           className="button secondary"
@@ -1304,7 +1342,7 @@ export default function Companion() {
           onClick={() => {
             if (
               window.confirm(
-                "¿Borrar tus asientos, notas, checklist y preferencias de este teléfono?",
+                "¿Borrar tus viajeros, cuartos, asientos, notas, checklist y preferencias de este teléfono?",
               )
             ) {
               clear();

@@ -1,6 +1,6 @@
 export type Day = "friday" | "saturday" | "sunday";
 export type Section =
-  "inicio" | "fin-de-semana" | "live" | "pilotos" | "mapa" | "guia";
+  "inicio" | "fin-de-semana" | "live" | "pilotos" | "mapa" | "guia" | "viaje";
 export type Provenance = {
   source: string;
   url: string;
@@ -19,6 +19,14 @@ export type Activity = {
 };
 export type Ticket = { day: Day; section: string; row: string; seats: string };
 export type Preferences = {
+  trip: {
+    travelers: { initials: string; name: string; room: "solo" | "shared" }[];
+    rooms: { solo: string; shared: string };
+    arrival: string;
+    football: string;
+    luggage: boolean;
+    checkedIn: boolean;
+  };
   tickets: Ticket[];
   notes: Record<Day, string>;
   checklist: Record<string, boolean>;

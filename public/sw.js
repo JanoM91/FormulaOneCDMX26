@@ -1,9 +1,11 @@
 /* The shell contains no personal data. User data stays in localStorage. */
-const CACHE = "mexico26-v4";
+const CACHE = "mexico26-v5";
 const SHELL = [
   "/",
   "/manifest.webmanifest",
   "/icon.svg",
+  "/mexico-gp-2026.png",
+  "/fonts/BarlowCondensed-Bold.ttf",
   "/icons/icon-192.png",
   "/icons/icon-512.png",
   "/icons/maskable-512.png",
