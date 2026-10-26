@@ -86,3 +86,48 @@ export function Heading({
     </div>
   );
 }
+export function MediaCredit({ media }: { media: import("@/lib/media").Media }) {
+  return (
+    <span className="media-credit">
+      Foto: {media.author} ·{" "}
+      <a href={media.licenseUrl} target="_blank" rel="noopener noreferrer">
+        {media.license}
+      </a>{" "}
+      ·{" "}
+      <a href={media.sourceUrl} target="_blank" rel="noopener noreferrer">
+        Wikimedia Commons
+      </a>
+    </span>
+  );
+}
+export function MediaFigure({
+  media,
+  className = "",
+  priority = false,
+  credit = true,
+}: {
+  media: import("@/lib/media").Media;
+  className?: string;
+  priority?: boolean;
+  credit?: boolean;
+}) {
+  return (
+    <figure className={`media-figure ${className}`}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={media.src}
+        width={media.width}
+        height={media.height}
+        alt={media.alt}
+        loading={priority ? "eager" : "lazy"}
+        decoding="async"
+        style={media.focus ? { objectPosition: media.focus } : undefined}
+      />
+      {credit && (
+        <figcaption>
+          <MediaCredit media={media} />
+        </figcaption>
+      )}
+    </figure>
+  );
+}

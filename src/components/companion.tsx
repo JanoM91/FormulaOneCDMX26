@@ -62,7 +62,15 @@ import {
 } from "@/lib/time";
 import { ticketImportSchema, ticketSchema } from "@/lib/preferences";
 import { usePreferences, useRemote } from "./hooks";
-import { External, Heading, Notice, Source } from "./primitives";
+import {
+  External,
+  Heading,
+  MediaCredit,
+  MediaFigure,
+  Notice,
+  Source,
+} from "./primitives";
+import { allMedia, teamCars, trackMedia } from "@/lib/media";
 import { TravelPanel } from "./travel";
 import { TimingPanel } from "./timing";
 
@@ -444,6 +452,13 @@ export default function Companion() {
                 <figcaption>Cartel del evento · MéxicoGP 2026</figcaption>
               </figure>
             </div>
+            {trackMedia.hero && (
+              <MediaFigure
+                className="track-banner"
+                media={trackMedia.hero}
+                priority
+              />
+            )}
             <section className="hero">
               <div className="hero-copy">
                 <span className="live-label">
@@ -838,6 +853,13 @@ export default function Companion() {
                       } as React.CSSProperties
                     }
                   >
+                    {teamCars[d.team] && (
+                      <MediaFigure
+                        className="car-band"
+                        media={teamCars[d.team]!}
+                        credit={false}
+                      />
+                    )}
                     <div className="driver-top">
                       <span className="driver-number">{d.number}</span>
                       <button
@@ -902,6 +924,12 @@ export default function Companion() {
                         } as React.CSSProperties
                       }
                     >
+                      {teamCars[t] && (
+                        <MediaFigure
+                          className="car-band"
+                          media={teamCars[t]!}
+                        />
+                      )}
                       <span className="eyebrow">ESCUDERÍA 2026</span>
                       <h3>{t}</h3>
                       <p className="small muted">
@@ -971,6 +999,27 @@ export default function Companion() {
             </Notice>
             <div className="two-columns">
               <div>
+                {(trackMedia.aerial || trackMedia.layout) && (
+                  <section className="card track-card">
+                    <span className="eyebrow">
+                      AUTÓDROMO HERMANOS RODRÍGUEZ
+                    </span>
+                    <h3>La pista desde arriba</h3>
+                    {trackMedia.aerial && (
+                      <MediaFigure media={trackMedia.aerial} />
+                    )}
+                    {trackMedia.layout && (
+                      <MediaFigure
+                        className="track-layout"
+                        media={trackMedia.layout}
+                      />
+                    )}
+                    <p className="small muted">
+                      Referencia visual del circuito. Las gradas, puertas y
+                      servicios se confirman en el mapa oficial.
+                    </p>
+                  </section>
+                )}
                 <section className="card map-card">
                   <span className="eyebrow">
                     TU RECORRIDO DEL {days[day].label.toUpperCase()}
@@ -1221,6 +1270,26 @@ export default function Companion() {
               </External>
               <External href={sources.fia}>Reglas y documentos FIA</External>
             </div>
+            {allMedia().length > 0 && (
+              <details className="card credits">
+                <summary>Créditos de imágenes</summary>
+                <p className="small muted">
+                  Fotos con licencia libre de Wikimedia Commons, reducidas para
+                  el teléfono. Sin afiliación con los autores ni con los
+                  equipos.
+                </p>
+                <ul>
+                  {allMedia().map((m) => (
+                    <li key={m.src}>
+                      <strong>{m.alt}</strong>
+                      {m.note ? ` (${m.note})` : ""}
+                      <br />
+                      <MediaCredit media={m} />
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            )}
           </>
         )}
         <footer>

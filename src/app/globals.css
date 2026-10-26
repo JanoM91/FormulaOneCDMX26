@@ -2491,3 +2491,89 @@ h2 {
 .icon-button {
   color: var(--ink);
 }
+
+/* Imágenes con licencia libre (autos, pista). */
+.media-figure {
+  margin: 0;
+}
+.media-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  background: var(--well, var(--bg));
+}
+.media-figure figcaption,
+.media-credit {
+  font-size: 0.62rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.media-figure figcaption {
+  margin-top: 6px;
+}
+.media-credit a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.track-banner {
+  margin: 0 0 24px;
+}
+.track-banner img {
+  aspect-ratio: 21 / 9;
+  border-radius: 4px 28px 4px 4px;
+  border: 1px solid #08aa61;
+}
+.theme-paddock .track-banner figcaption {
+  color: #b3cfbf;
+}
+.car-band {
+  margin: -22px -22px 18px;
+  position: relative;
+}
+.car-band img {
+  aspect-ratio: 16 / 9;
+  border-radius: 0;
+}
+.car-band::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 4px;
+  background: var(--team);
+}
+.car-band figcaption {
+  padding: 4px 22px 0;
+}
+.track-card {
+  margin-bottom: 20px;
+}
+.track-card .media-figure + .media-figure {
+  margin-top: 16px;
+}
+.track-layout img {
+  object-fit: contain;
+  background: #fff;
+  padding: 10px;
+}
+.credits summary {
+  font-weight: 700;
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+.credits ul {
+  margin: 12px 0 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 12px;
+  font-size: 0.8rem;
+}
+@media (max-width: 640px) {
+  .car-band {
+    margin: -20px -20px 16px;
+  }
+}
