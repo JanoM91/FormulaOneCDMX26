@@ -849,7 +849,7 @@ export default function Companion() {
                       </div>
                     </div>
                     <p className="small muted">
-                      Compañero:{" "}
+                      Otros pilotos asociados en temporada:{" "}
                       {allDrivers
                         .filter((p) => p.team === d.team && p.id !== d.id)
                         .map((p) => p.name)
@@ -874,6 +874,10 @@ export default function Companion() {
                     >
                       <span className="eyebrow">ESCUDERÍA 2026</span>
                       <h3>{t}</h3>
+                      <p className="small muted">
+                        Participantes registrados en temporada; puede incluir
+                        sustitutos. No confirma la alineación de México.
+                      </p>
                       <div className="driver-stats">
                         <div>
                           <span>POSICIÓN</span>

@@ -1,5 +1,5 @@
 /* The shell contains no personal data. User data stays in localStorage. */
-const CACHE = "mexico26-v3";
+const CACHE = "mexico26-v4";
 const SHELL = [
   "/",
   "/manifest.webmanifest",

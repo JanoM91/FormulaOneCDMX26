@@ -55,7 +55,7 @@ La Puerta 2 del sábado proviene de la indicación personal del boleto. La pági
 
 ## Despliegue
 
-Proyecto Vercel: `formula-one-cdmx26`, conectado a `JanoM91/FormulaOneCDMX26`. Framework Next.js, Node 24, comando `npm run build`, región de funciones `iad1`. Vercel maneja HTTPS. Usar la rama de PR para preview; promover a producción únicamente después de revisar el resultado. La protección de acceso de Vercel se conserva.
+Proyecto Vercel: `formula-one-cdmx26`, conectado a `JanoM91/FormulaOneCDMX26`. Framework Next.js, Node 24, comando `npm run build`, región de funciones `iad1`. Vercel maneja HTTPS. La conexión de Git desplegó automáticamente la primera rama de implementación en producción: https://formula-one-cdmx26.vercel.app. El PR permanece abierto para revisión. Para cambios posteriores, comprobar el entorno del deployment antes de promoverlo. La configuración de protección de Vercel se conserva.
 
 ## Límites conocidos
 

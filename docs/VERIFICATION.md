@@ -8,7 +8,9 @@ Las pruebas de integración de proveedores usan respuestas HTTP controladas. Ver
 
 ## Conectividad de fuentes
 
-26 octubre: OpenF1 sesiones México 2026, Jolpica clasificación 2026 y Open-Meteo devolvieron HTTP 200 en una consulta real. Credenciales OpenF1 pendientes de configuración por el propietario en Vercel. No se capturan ni publican secretos.
+26 octubre: OpenF1 sesiones México 2026, Jolpica clasificación 2026 y Open-Meteo devolvieron HTTP 200 en una consulta real. El propietario configuró las dos variables OpenF1 como Secret en producción. No se capturan ni publican sus valores.
+
+Vercel desplegó automáticamente la rama de implementación en `https://formula-one-cdmx26.vercel.app` con estado READY. En el dominio alojado se confirmó HTTP 200 de timing (sin sesión iniciada), 11 constructores y clima. El navegador mostró la aplicación, el pronóstico y la clasificación de constructores. El conector de inspección protegido devolvió 403 por permisos propios, pero el acceso público normal respondió correctamente.
 
 ## Checklist de navegador
 
