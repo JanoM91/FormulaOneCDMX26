@@ -588,6 +588,11 @@ small {
   position: relative;
   min-height: 225px;
 }
+.weather > h3,
+.weather > p,
+.weather .temperature {
+  padding-right: 64px;
+}
 .weather-icon {
   position: absolute;
   right: 25px;
@@ -695,6 +700,7 @@ small {
   display: block;
 }
 .news-grid {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
@@ -1005,7 +1011,7 @@ tbody tr:last-child td {
   border-bottom: 0;
 }
 tbody tr:nth-child(even) {
-  background: var(--bg);
+  background: var(--well, var(--bg));
 }
 .tyre {
   border: 1px solid var(--line);
@@ -1134,7 +1140,7 @@ tbody tr:nth-child(even) {
   justify-content: center;
 }
 .map-placeholder {
-  background: var(--bg);
+  background: var(--well, var(--bg));
   border: 1px solid var(--line);
   border-radius: 10px;
   padding: 28px 22px;
@@ -1164,7 +1170,7 @@ tbody tr:nth-child(even) {
   font-family: inherit;
   font-size: 0.82rem;
   line-height: 1.9;
-  background: var(--bg);
+  background: var(--well, var(--bg));
   padding: 20px;
   border-radius: 9px;
   border: 1px solid var(--line);
@@ -1172,7 +1178,7 @@ tbody tr:nth-child(even) {
 }
 .location-result {
   border: 1px solid var(--line);
-  background: var(--bg);
+  background: var(--well, var(--bg));
   padding: 15px;
   margin-top: 16px;
   border-radius: 8px;
@@ -1334,11 +1340,26 @@ dialog > .button {
   border-radius: 8px;
   padding: 15px;
   flex-wrap: wrap;
+  position: relative;
+}
+.import-button {
+  cursor: pointer;
 }
 .import-button input {
-  font-size: 0.7rem;
-  max-width: 100%;
-  display: block;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+}
+.import-button:focus-within {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+.import-button .import-hint {
+  flex-basis: 100%;
+  font-size: 0.72rem;
+  color: var(--muted);
 }
 .skip-link {
   position: fixed;
@@ -1920,6 +1941,7 @@ h2 {
   --primary: #006c3d;
   --accent: #79fbaa;
   --line: #c8d8cc;
+  --well: #e8f1ea;
   background:
     radial-gradient(ellipse at 95% 5%, #00a75a44, transparent 45%),
     repeating-linear-gradient(72deg, transparent 0 8px, #2df68d08 8px 10px),
@@ -2389,6 +2411,7 @@ h2 {
   --muted: #222;
   --primary: #111;
   --line: #666;
+  --well: #f0f0f0;
   background: #fff;
   color: #000;
 }
@@ -2438,11 +2461,31 @@ h2 {
 .theme-paddock .section-heading {
   color: #f5fff7;
 }
-.theme-paddock .card .section-heading {
+.theme-paddock .card .section-heading,
+.theme-paddock .travel-panel > section.card > .section-heading {
   color: var(--ink);
 }
-.high-contrast .section-heading {
+.theme-paddock .segmented button {
+  color: var(--ink);
+}
+.theme-paddock .segmented button[aria-pressed="true"] {
+  color: white;
+}
+.theme-paddock .source {
+  color: #b3cfbf;
+}
+.theme-paddock .card .source,
+.theme-paddock dialog .source {
+  color: var(--muted);
+}
+.high-contrast .section-heading,
+.high-contrast main > .filter-bar,
+.high-contrast .source,
+.high-contrast .segmented button {
   color: #000;
+}
+.high-contrast .segmented button[aria-pressed="true"] {
+  color: #fff;
 }
 
 .icon-button {

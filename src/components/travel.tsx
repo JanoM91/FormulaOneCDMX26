@@ -146,6 +146,9 @@ export function TravelPanel({
         <div className="button-row">
           <label className="import-button">
             <Upload size={18} /> Importar nuestro viaje
+            <span className="import-hint">
+              Toca para elegir el archivo .json que te compartieron
+            </span>
             <input
               aria-label="Importar nuestro viaje"
               type="file"

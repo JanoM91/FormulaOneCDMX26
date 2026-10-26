@@ -1379,7 +1379,11 @@ export default function Companion() {
         </p>
         <label className="import-button">
           <Upload size={19} /> Importar archivo privado
+          <span className="import-hint">
+            Toca para elegir el archivo .json de asientos
+          </span>
           <input
+            aria-label="Importar archivo privado de asientos"
             type="file"
             accept="application/json,.json"
             onChange={(e) => void importTickets(e.target.files?.[0])}
