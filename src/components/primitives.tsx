@@ -1,4 +1,10 @@
-import { ArrowUpRight, CircleCheck, AlertTriangle, Clock3 } from "lucide-react";
+import {
+  ArrowUpRight,
+  CircleCheck,
+  AlertTriangle,
+  Clock3,
+  ChevronDown,
+} from "lucide-react";
 import type { Provenance } from "@/lib/types";
 import { fullTime, freshness } from "@/lib/time";
 export function External({
@@ -129,5 +135,35 @@ export function MediaFigure({
         </figcaption>
       )}
     </figure>
+  );
+}
+/** Bloque plegable: muestra icono + título y oculta el detalle hasta tocarlo. */
+export function Fold({
+  icon,
+  title,
+  hint,
+  children,
+  open = false,
+  className = "",
+}: {
+  icon?: React.ReactNode;
+  title: React.ReactNode;
+  hint?: React.ReactNode;
+  children: React.ReactNode;
+  open?: boolean;
+  className?: string;
+}) {
+  return (
+    <details className={`fold ${className}`} open={open}>
+      <summary>
+        {icon && <span className="fold-icon">{icon}</span>}
+        <span className="fold-title">
+          <strong>{title}</strong>
+          {hint && <small>{hint}</small>}
+        </span>
+        <ChevronDown className="fold-chevron" size={18} aria-hidden="true" />
+      </summary>
+      <div className="fold-body">{children}</div>
+    </details>
   );
 }

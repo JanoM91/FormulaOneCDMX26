@@ -1,6 +1,5 @@
 export type Day = "friday" | "saturday" | "sunday";
-export type Section =
-  "inicio" | "fin-de-semana" | "live" | "pilotos" | "mapa" | "guia" | "viaje";
+export type Section = "inicio" | "viaje" | "live" | "pilotos" | "mapa" | "guia";
 export type Provenance = {
   source: string;
   url: string;

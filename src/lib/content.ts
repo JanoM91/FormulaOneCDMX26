@@ -1,5 +1,18 @@
 import type { Activity, Day, Driver, Preferences } from "./types";
 import { dayDates } from "./time";
+import { emptyDrive } from "./preferences";
+import type { Ticket } from "./types";
+/** Nuestros asientos, autorizados por el propietario para mostrarse en la app. */
+export const ourTickets: Ticket[] = [
+  { day: "friday", section: "103", row: "8", seats: "7, 8 y 9" },
+  { day: "saturday", section: "OR0118", row: "6", seats: "1, 2 y 3" },
+  { day: "sunday", section: "105", row: "13", seats: "11, 12 y 13" },
+];
+export function ticketFor(day: Day, saved: Ticket[]) {
+  return (
+    saved.find((t) => t.day === day) ?? ourTickets.find((t) => t.day === day)
+  );
+}
 export const verifiedAt = "2026-10-26T14:30:00-06:00";
 export const sources = {
   schedule:
@@ -272,9 +285,9 @@ export const defaultPreferences: Preferences = {
     football: "",
     luggage: false,
     checkedIn: false,
-    drive: { origin: "", stop: null },
+    drive: emptyDrive,
   },
-  tickets: [],
+  tickets: ourTickets,
   notes: { friday: "", saturday: "", sunday: "" },
   checklist: {},
   favorite: "",

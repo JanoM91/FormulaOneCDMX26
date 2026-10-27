@@ -1,5 +1,14 @@
 import { z } from "zod";
-export const emptyDrive = { origin: "", stop: null };
+export const emptyDrive = {
+  origin: "Xalapa, Veracruz",
+  stop: {
+    label: "ITAM Santa Teresa · titulación",
+    address:
+      "Av. Camino a Santa Teresa 930, Héroes de Padierna, Magdalena Contreras, Ciudad de México",
+    window: "L–V 10:00–18:00",
+    note: "Entregar la documentación de titulación de la maestría en Control Escolar de Posgrados: paquete cerrado y rotulado con clave única y programa. Confirmar oficina y horario por teléfono.",
+  },
+};
 export const driveSchema = z.object({
   origin: z.string().trim().max(120),
   stop: z

@@ -39,3 +39,9 @@ La versión de desarrollo detenida durante la interrupción sirvió una shell de
 25 pruebas aprobadas (nuevas: migración del plan de manejo, validación de parada, ruta con punto intermedio). TypeScript y compilación de producción aprobados.
 
 Compilación local a 390 × 844 (Playwright, tema México 2026, claro/oscuro, alto contraste y temas alternos): sin desbordamiento horizontal en las 7 secciones (antes Inicio medía 646 px); títulos y pestañas antes invisibles ahora legibles; 25 imágenes cargan sin errores; créditos visibles en Guía. Archivo de viaje anonimizado importado: ruta Maps con origen, parada y hotel; persistencia tras recarga. No se probó en un teléfono físico ni en la preview de Vercel desde este entorno.
+
+## Rediseño minimalista — 27 octubre 2026
+
+Navegación de 6 secciones (Inicio, Viaje, En pista, Pilotos, Mapa, Guía). "Mi finde" y "Viaje" se fusionaron con pestañas Jue–Dom. Textos largos en bloques plegables. En pista: trazado propio en SVG con Grada 4 (vie), Boxes Oro Sur (sáb) y Grada 7 (dom) marcados; tocar un día cambia el boleto. Pilotos: tarjetas por escudería con número, bandera, foto del auto (Commons) y ficha plegable (director, base, motor, títulos, curiosidades). Guía: Datos e Itinerario (con trámite en ITAM y lista de qué llevar). Asientos de los tres días incluidos por decisión del propietario.
+
+Verificado en compilación local a 390 × 844: 25 pruebas, build y TypeScript aprobados; sin desbordamiento horizontal en las 8 vistas probadas; sin errores de consola. Datos de escuderías verificados el 26-oct-2026 (ver `src/lib/teams.ts`). No se usan fotos de pilotos ni logotipos de equipos (derechos de imagen y marcas).

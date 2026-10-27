@@ -80,10 +80,11 @@ test("Maps encodes public destinations and lets arrival origin be selected on de
   assert.equal(route.searchParams.get("origin"), hotel.destination);
   assert.equal(route.searchParams.get("travelmode"), "transit");
 });
-test("trips saved before the drive plan migrate with an empty drive", () => {
+test("trips saved before the drive plan migrate with the default drive", () => {
   const { drive: _drive, ...legacyTrip } = defaultPreferences.trip;
   const result = tripImportSchema.parse({ trip: legacyTrip });
-  assert.deepEqual(result.trip.drive, { origin: "", stop: null });
+  assert.equal(result.trip.drive.origin, "Xalapa, Veracruz");
+  assert.ok(result.trip.drive.stop?.address.includes("Santa Teresa"));
 });
 test("drive plan accepts a stop and rejects a stop without address", () => {
   const ok = tripImportSchema.parse({

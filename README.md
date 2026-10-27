@@ -22,7 +22,7 @@ El sitio funciona sin credenciales. Para el timing en vivo, configurar `OPENF1_U
 
 ## Datos privados
 
-`.private/` está excluido del repositorio. El archivo de asientos de la familia se entrega separadamente, no se distribuye con la web. En cada teléfono: Ajustes → Configurar asientos → Importar archivo privado. El importador acepta únicamente `day`, `section`, `row`, `seats`; descarta campos desconocidos. No hay endpoints para subir información personal.
+`.private/` está excluido del repositorio. Por decisión del propietario (27-oct-2026), sección, fila y asientos de los tres días se muestran en la app (`ourTickets` en `src/lib/content.ts`); los boletos con código de barras siguen solo en la app oficial. En cada teléfono: Ajustes → Configurar asientos → Importar archivo privado. El importador acepta únicamente `day`, `section`, `row`, `seats`; descarta campos desconocidos. No hay endpoints para subir información personal.
 
 Formato admitido: `{"tickets":[{"day":"friday","section":"A","row":"1","seats":"1, 2"}]}`. Valores de día: `friday`, `saturday`, `sunday`. No agregar QR ni datos de Ticketmaster.
 
